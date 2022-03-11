@@ -1,13 +1,21 @@
-import {useState, useEffect, useCallback, useMemo} from 'react';
 import './color-square.module.scss';
 import ColorSlider from '../color-slider';
 import TinySwatch from '../tiny-swatch';
+
+export type Hues = {
+  red: number;
+  green: number;
+  blue: number;
+  alpha: number;
+}
 
 type ColorSquareProps = {
   red: number;
   green: number;
   blue: number;
   alpha: number;
+  idx: number;
+  onChange: (_newColor: Hues, _idx: number) => void;
 }
 
 const RedDot = () => <TinySwatch color={'red'}/>
@@ -22,16 +30,14 @@ const getHexColor = (red: number, green: number, blue: number, alpha: number) =>
   return `#${hexR}${hexG}${hexB}${hexA}`;
 }
 
-const ColorSquare = ({red, green, blue, alpha}: ColorSquareProps) => {
-  const [rgba, setRgba] = useState({red, green, blue, alpha});
+const ColorSquare = ({red, green, blue, alpha, idx, onChange}: ColorSquareProps) => {
+  const hexColor = getHexColor(red, green, blue, alpha);
 
-  const hexColor = getHexColor(rgba.red, rgba.green, rgba.blue, rgba.alpha);
-
-  const onChange = (red: number, green: number, blue: number, alpha: number) => {
-    setRgba({red, green, blue, alpha});
+  const handleChange = (red: number, green: number, blue: number, alpha: number) => {
+    onChange({red, green, blue, alpha}, idx)
   }
 
-  const textColor = rgba.red + rgba.green + rgba.blue >= 200 ? '#000' : '#FFF';
+  const textColor = red + green + blue >= 300 ? '#000' : '#FFF';
   const styles: {[key: string]: string} = {};
   styles['--background-color'] = hexColor;
   styles['color'] = textColor;
@@ -39,9 +45,11 @@ const ColorSquare = ({red, green, blue, alpha}: ColorSquareProps) => {
   return <color-square-container>
     <color-square style={styles}>{hexColor.toUpperCase()}
     </color-square>
-    <ColorSlider indicator={<RedDot/>} level={red} onChange={(newRed) => onChange(newRed, rgba.green, rgba.blue, rgba.alpha)}/>
-    <ColorSlider indicator={<GreenDot/>} level={green} onChange={(newGreen) => onChange(rgba.red, newGreen, rgba.blue, rgba.alpha)}/>
-    <ColorSlider indicator={<BlueDot/>} level={red} onChange={(newBlue) => onChange(rgba.red, rgba.green, newBlue, rgba.alpha)}/>
+    <slider-array>
+      <ColorSlider indicator={<RedDot/>} level={red} onChange={(newRed) => handleChange(newRed, green, blue, alpha)}/>
+      <ColorSlider indicator={<GreenDot/>} level={green} onChange={(newGreen) => handleChange(red, newGreen, blue, alpha)}/>
+      <ColorSlider indicator={<BlueDot/>} level={red} onChange={(newBlue) => handleChange(red, green, newBlue, alpha)}/>
+    </slider-array>
     </color-square-container>
 };
 export default ColorSquare;
