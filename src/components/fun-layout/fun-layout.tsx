@@ -1,5 +1,5 @@
 import './fun-layout.module.scss';
-import ColorsArray from "../colors-array";
+import ColorsArray from '../colors-array';
 
 const FunLayout = () => {
   return <fun-layout>

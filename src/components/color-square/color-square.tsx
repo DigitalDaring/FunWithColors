@@ -1,5 +1,4 @@
 import './color-square.module.scss';
-import {text} from "stream/consumers";
 
 type ColorSquareProps = {
   red: number;

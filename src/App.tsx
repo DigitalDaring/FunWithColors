@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
-import FunLayout from "./components/fun-layout";
+import FunLayout from './components/fun-layout';
 
 function App() {
   return (

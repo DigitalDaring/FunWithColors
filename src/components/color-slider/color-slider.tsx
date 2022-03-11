@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react';
 import './color-slider.module.scss';
 
 const ColorSlider = () => {
