@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# A little bit about Fun With Colors!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is just a simple way to pick a fun palette for your next app!  It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
