@@ -12,7 +12,8 @@ const pickRandomColor = (): Hues => ({
 })
 
 const ColorsArray = () => {
-  const [colors, setColors] = useState<Array<Hues>>([0,1,2,3].map(() => pickRandomColor()));
+  const [colors, setColors] =
+    useState<Array<Hues>>([0,1,2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(() => pickRandomColor()));
   const handleChange = (newHues: Hues, idx: number) => {
     const newColors = [...colors];
     newColors[idx] = newHues;

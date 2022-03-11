@@ -1,8 +1,16 @@
 colors-array {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(16, 1fr);
+  grid-gap: 20px;
   grid-area: colors;
   height: 100%;
   width: 100%;
+}
+
+@media only screen and (min-width: 720px) {
+  colors-array {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
 }

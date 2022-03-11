@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { hydrate, render } from "react-dom";
 
 declare global {
   namespace JSX {
@@ -24,6 +25,13 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+const rootElement = document.getElementById('root');
+if (rootElement?.hasChildNodes()) {
+  hydrate(<App />, rootElement);
+} else {
+  render(<App />, rootElement);
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
