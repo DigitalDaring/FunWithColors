@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { hydrate, render } from "react-dom";
 
 declare global {
   namespace JSX {
