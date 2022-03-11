@@ -1,0 +1,19 @@
+tiny-swatch {
+  display: block;
+  border-radius: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+
+  &[color=red] {
+    background-color: red;
+  }
+
+  &[color=green] {
+    background-color: green;
+  }
+
+  &[color=blue] {
+    background-color: blue;
+  }
+}
